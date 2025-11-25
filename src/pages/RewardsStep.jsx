@@ -52,6 +52,16 @@ export default function RewardsStep() {
 
   const handleBack = () => navigate("/");
 
+  const toggleSDG = (sdg) => {
+    const isSelected = data.sdgs.includes(sdg);
+
+    const updated = isSelected
+      ? data.sdgs.filter((x) => x !== sdg)
+      : [...data.sdgs, sdg];
+
+    updateField("sdgs", updated);
+  };
+
   return (
     <StepLayout
       title="Rewards & Timeline"
@@ -87,9 +97,7 @@ export default function RewardsStep() {
               <input
                 type="number"
                 value={reward.amount}
-                onChange={(e) =>
-                  updateField("reward.amount", e.target.value)
-                }
+                onChange={(e) => updateField("reward.amount", e.target.value)}
                 className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
               />
               {errors.amount && (
@@ -102,9 +110,7 @@ export default function RewardsStep() {
               <input
                 type="number"
                 value={reward.winners}
-                onChange={(e) =>
-                  updateField("reward.winners", e.target.value)
-                }
+                onChange={(e) => updateField("reward.winners", e.target.value)}
                 className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
               />
               {errors.winners && (
@@ -113,6 +119,7 @@ export default function RewardsStep() {
             </div>
           </div>
         </section>
+
 
         <section>
           <h2 className="text-xl font-semibold mb-4 text-slate-900">Timeline</h2>
@@ -139,10 +146,7 @@ export default function RewardsStep() {
                 type="number"
                 value={estimated.days}
                 onChange={(e) =>
-                  updateField(
-                    "timeline.estimated_completion.days",
-                    e.target.value
-                  )
+                  updateField("timeline.estimated_completion.days", e.target.value)
                 }
                 className="mt-1 px-3 py-2 border rounded-md w-full"
               />
@@ -154,10 +158,7 @@ export default function RewardsStep() {
                 type="number"
                 value={estimated.hours}
                 onChange={(e) =>
-                  updateField(
-                    "timeline.estimated_completion.hours",
-                    e.target.value
-                  )
+                  updateField("timeline.estimated_completion.hours", e.target.value)
                 }
                 className="mt-1 px-3 py-2 border rounded-md w-full"
               />
@@ -187,10 +188,7 @@ export default function RewardsStep() {
             <button
               type="button"
               onClick={() =>
-                updateField(
-                  "hasImpactCertificate",
-                  !data.hasImpactCertificate
-                )
+                updateField("hasImpactCertificate", !data.hasImpactCertificate)
               }
               className={`w-12 h-6 rounded-full p-1 flex transition ${
                 data.hasImpactCertificate ? "bg-blue-600" : "bg-gray-300"
@@ -210,9 +208,7 @@ export default function RewardsStep() {
               <input
                 type="text"
                 value={data.impactBriefMessage}
-                onChange={(e) =>
-                  updateField("impactBriefMessage", e.target.value)
-                }
+                onChange={(e) => updateField("impactBriefMessage", e.target.value)}
                 className="mt-1 w-full px-3 py-2 border rounded-md focus:ring-2 focus:ring-blue-500"
               />
               {errors.impactBriefMessage && (
@@ -232,29 +228,25 @@ export default function RewardsStep() {
               const isSelected = data.sdgs.includes(sdg);
 
               return (
-                <label
+                <div
                   key={sdg}
-                  onClick={() => {
-                    const newList = isSelected
-                      ? data.sdgs.filter((x) => x !== sdg)
-                      : [...data.sdgs, sdg];
-
-                    updateField("sdgs", newList);
-                  }}
-                  className={`px-3 py-2 border rounded-md cursor-pointer ${
-                    isSelected
-                      ? "border-blue-500 bg-blue-50"
-                      : "border-gray-300"
-                  }`}
+                  onClick={() => toggleSDG(sdg)}
+                  className={`px-3 py-2 border rounded-md cursor-pointer flex items-center gap-2
+                    ${
+                      isSelected
+                        ? "border-blue-500 bg-blue-50"
+                        : "border-gray-300"
+                    }
+                  `}
                 >
                   <input
                     type="checkbox"
                     checked={isSelected}
                     readOnly
-                    className="mr-2 accent-blue-600"
+                    className="accent-blue-600"
                   />
-                  {sdg}
-                </label>
+                  <span>{sdg}</span>
+                </div>
               );
             })}
           </div>

@@ -4,6 +4,7 @@ A 3-step responsive wizard for creating a Bounty, built as part of the Varunastr
 The application follows the provided Figma reference and includes state management, validation, reusable UI components, multi-step navigation, confirmation screen, and final JSON output.
 
 ## Live Demo
+
 https://bounty-creator-wizard.vercel.app/
 
 ## Project Overview
@@ -58,38 +59,38 @@ Deployment -> Vercel<br>
 Language -> JavaScript<br>
 
 ## Project Structure
-src/<br>
-│<br>
-├── assets/<br>
-│   └── react.svg<br>
-│<br>
-├── components/<br>
-│   └── ui/                   # Reusable UI components<br>
-│        ├── Button.jsx        # Button used across forms & navigation<br>
-│        ├── Checkbox.jsx      # Checkbox (SDGs, Terms & Conditions)<br>
-│        ├── Input.jsx         # Text/number input field<br>
-│        ├── RadioGroup.jsx    # Radio selection (Digital/Physical mode)<br>
-│        ├── Select.jsx        # Custom dropdown<br>
-│        ├── Textarea.jsx      # Standard textarea (used instead of rich text editor)<br>
-│        └── Toggle.jsx        # Switch component (Impact Certificate, Backer toggle)<br>
-│<br>
-├── context/<br>
-│   └── BountyFormContext.jsx # Global multi-step form state using React Context API<br>
-│<br>
-├── layout/<br>
-│   ├── Sidebar.jsx           # Left sidebar navigation (Basics, Rewards, Backer)<br>
-│   └── StepLayout.jsx        # Main layout wrapper (header + progress + buttons)<br>
-│<br>
-├── pages/<br>
-│   ├── StepBasics.jsx        # Step 1: Basic Details<br>
-│   ├── RewardsStep.jsx       # Step 2: Rewards & Timeline<br>
-│   ├── StepBacker.jsx        # Step 3: Backer Information<br>
-│   ├── Confirmation.jsx      # Confirmation screen before final submit<br>
-│   └── ResultPage.jsx        # Final JSON output page<br>
-│<br>
-├── App.jsx                   # Main routing setup (React Router)<br>
-├── main.jsx                  # App entry point<br>
-└── index.css                 # Tailwind + global styles<br>
+
+src/
+├── assets/
+│ └── react.svg
+│
+├── components/
+│ └── ui/ # Reusable UI components
+│ ├── Button.jsx # Reusable button component used in forms & navigation
+│ ├── Checkbox.jsx # Checkbox component (used for SDGs selection)
+│ ├── Input.jsx # Text/number input component
+│ ├── RadioGroup.jsx # Radio button group (Digital/Physical mode)
+│ ├── Select.jsx # Custom dropdown component
+│ ├── Textarea.jsx # Textarea for descriptions and messages
+│ └── Toggle.jsx # Switch/toggle (Impact Certificate, Backer toggle)
+│
+├── context/
+│ └── BountyFormContext.jsx # Global state for the 3-step form using React Context API
+│
+├── layout/
+│ ├── Sidebar.jsx # Left sidebar navigation (Basics, Rewards, Backer)
+│ └── StepLayout.jsx # Shared layout wrapper for all steps (sidebar + header + buttons)
+│
+├── pages/ # All main step screens
+│ ├── StepBasics.jsx # Step 1: Basic Details form
+│ ├── RewardsStep.jsx # Step 2: Rewards & Timeline form
+│ ├── StepBacker.jsx # Step 3: Backer Information form
+│ ├── Confirmation.jsx # In-between confirmation screen
+│ └── ResultPage.jsx # Final JSON preview page after submission
+│
+├── App.jsx # Main routes configuration (React Router)
+├── main.jsx # App entry point
+└── index.css # TailwindCSS + global styles
 
 The project follows a modular and scalable folder structure.
 All form-related screens are stored in /pages, shared UI components live inside /components/ui, and global state management is handled through React Context in /context.
@@ -121,78 +122,65 @@ http://localhost:5173
 
 ## Build & Deployment Instructions
 
-This project is deployed using Vercel.
+This project is deployed using Vercel.<br>
 
-Follow the steps below to deploy your project:
+Follow the steps below to deploy your project:<br>
 
-1. Push Your Code to GitHub
+Push Your Code to GitHub<br>
+Make sure your full project is committed and pushed:<br>
 
-Make sure your full project is committed and pushed:
+git add .<br> git commit -m "Initial bounty-creator-wizard"<br> git push origin main<br>
 
-git add .
-git commit -m "Initial bounty-creator-wizard"
-git push origin main
+Create a Vercel Account<br>
+Go to: https://vercel.com/signup<br>
 
-2. Create a Vercel Account
+Login with GitHub.<br>
 
-Go to:
-https://vercel.com/signup
+Import Your Repository<br>
+Click "New Project"<br>
 
-Login with GitHub.
+Select your GitHub repository<br>
 
-3. Import Your Repository
+Vercel will auto-detect Vite + React<br>
 
-Click "New Project"
+Configure Build Settings<br>
+Vercel will automatically fill these, but ensure they match:<br>
 
-Select your GitHub repository
+Setting Value <br>Framework Preset Vite <br> Build Command<br> npm run build <br>Install Command <br> npm install Output Directory dist<br> 5. Environment Variables (Not Required)<br>
 
-Vercel will auto-detect Vite + React
+This project does not require additional env variables.<br>
 
-4. Configure Build Settings
+Click “Deploy”<br>
+Vercel will build your app and give you a live URL like:<br>
 
-Vercel will automatically fill these, but ensure they match:
+https://bounty-creator-wizard.vercel.app/<br>
 
-Setting	Value
-Framework Preset	Vite
-Build Command	npm run build
-Install Command	npm install
-Output Directory	dist
-5. Environment Variables (Not Required)
+## Assumptions & Notes<br>
 
-This project does not require additional env variables.
+No backend is required; submission is simulated via setTimeout.<br>
 
-6. Click “Deploy”
+Bounty Description input is implemented using a standard HTML <textarea>.<br>
 
-Vercel will build your app and give you a live URL like:
+SDGs provided as a sample list (extendable).<br>
 
-https://bounty-creator-wizard.vercel.app/
+All validation rules strictly followed:<br>
 
-## Assumptions & Notes
+1. Title max 40 characters<br>
 
-No backend is required; submission is simulated via setTimeout.
+2. Required fields must be filled<br>
 
-Bounty Description input is implemented using a standard HTML <textarea>.
+3. Amount & Winners > 0<br>
 
-SDGs provided as a sample list (extendable).
+4. Impact Certificate Brief required when toggle is ON<br>
 
-All validation rules strictly followed:
+5. Backer fields required when toggle is ON<br>
 
-1. Title max 40 characters
+6. Responsiveness implemented based on Figma guidelines.<br>
 
-2. Required fields must be filled
+## How to Navigate the App<br>
 
-3. Amount & Winners > 0
+Sidebar allows backward navigation.<br>
 
-4. Impact Certificate Brief required when toggle is ON
+Forward navigation is blocked until each step is valid.<br>
 
-5. Backer fields required when toggle is ON
-
-6. Responsiveness implemented based on Figma guidelines.
-
-## How to Navigate the App
-
-Sidebar allows backward navigation.
-
-Forward navigation is blocked until each step is valid.
-
-After final submit → Confirmation screen → JSON preview.
+After final submit → Confirmation screen → JSON preview.<br>

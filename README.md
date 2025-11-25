@@ -59,11 +59,11 @@ Language -> JavaScript
 ## Project Structure
 
 src/
-├── assets/
-│ └── react.svg
-│
-├── components/
-│ └── ui/ # Reusable UI components
+ assets/
+  react.svg
+
+ components/
+  ui/ # Reusable UI components
 │ ├── Button.jsx # Reusable button component used in forms & navigation
 │ ├── Checkbox.jsx # Checkbox component (used for SDGs selection)
 │ ├── Input.jsx # Text/number input component
@@ -78,9 +78,9 @@ src/
 ├── layout/
 │ ├── Sidebar.jsx # Left sidebar navigation (Basics, Rewards, Backer)
 │ └── StepLayout.jsx # Shared layout wrapper for all steps (sidebar + header + buttons)
-│
-├── pages/ # All main step screens
-│ ├── StepBasics.jsx # Step 1: Basic Details form
+
+pages/ # All main step screens
+ StepBasics.jsx # Step 1: Basic Details form
 │ ├── RewardsStep.jsx # Step 2: Rewards & Timeline form
 │ ├── StepBacker.jsx # Step 3: Backer Information form
 │ ├── Confirmation.jsx # In-between confirmation screen

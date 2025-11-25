@@ -16,7 +16,7 @@ const sdgOptions = [
 
 export default function RewardsStep() {
   const navigate = useNavigate();
-  const { data, updateField } = useBountyForm();
+  const { data, updateField,setStepValid  } = useBountyForm();
 
   const reward = data.reward;
   const timeline = data.timeline;
@@ -46,7 +46,7 @@ export default function RewardsStep() {
   };
 
  const handleNext = () => {
-   if (!data.description|| !data.title  || !data.data.type) {
+   if (!data.description|| !data.title  || !data.type) {
     alert("Please complete Basic Details first.");
     navigate("/");
     return;
@@ -198,7 +198,7 @@ export default function RewardsStep() {
               onClick={() =>
                 updateField("hasImpactCertificate", !data.hasImpactCertificate)
               }
-              className={`w-12 h-6 rounded-full p-1 flex transition ${
+              className={`w-12 h-6  rounded-full p-1 flex transition  ${
                 data.hasImpactCertificate ? "bg-blue-600" : "bg-gray-300"
               }`}
             >

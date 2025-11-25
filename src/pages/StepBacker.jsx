@@ -37,7 +37,7 @@ const handleSubmit = () => {
     navigate("/rewards");
     return;
   }
-  if (!data.description|| !data.title  || !data.data.type) {
+  if (!data.description|| !data.title  || !data.type) {
     alert("Please complete Basic Details first.");
     navigate("/");
     return;

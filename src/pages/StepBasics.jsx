@@ -8,7 +8,7 @@ const DOMINANT_CORES = ["Water", "Earth", "Social", "Energy"];
 
 export default function StepBasics() {
   const navigate = useNavigate();
-  const { data, updateField } = useBountyForm();
+  const { data, updateField,stepValid, setStepValid } = useBountyForm();
 
   const [errors, setErrors] = useState({});
   const mode = data.mode || "digital";
@@ -36,9 +36,16 @@ export default function StepBasics() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const nextStep = () => {
-    if (validate()) navigate("/rewards");
-  };
+ 
+
+
+const nextStep = () => {
+  if (validate()) {
+    setStepValid(prev => ({ ...prev, basics: true }));
+    navigate("/rewards");
+  }
+};
+
 
   return (
     <StepLayout

@@ -40,6 +40,12 @@ export const BountyFormProvider = ({ children }) => {
     terms_accepted: false,
   });
 
+  const [stepValid, setStepValid] = useState({
+    basics: false,
+    rewards: false,
+    backer: false,
+  });
+
 
   const updateField = (path, value) => {
     setData((prev) => {
@@ -57,7 +63,14 @@ export const BountyFormProvider = ({ children }) => {
   };
 
   return (
-    <BountyFormContext.Provider value={{ data, updateField }}>
+    <BountyFormContext.Provider
+      value={{
+        data,
+        updateField,
+        stepValid,
+        setStepValid,   
+      }}
+    >
       {children}
     </BountyFormContext.Provider>
   );

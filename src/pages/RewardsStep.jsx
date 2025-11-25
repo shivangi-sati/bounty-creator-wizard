@@ -45,10 +45,18 @@ export default function RewardsStep() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleNext = () => {
-    if (!validate()) return;
+ const handleNext = () => {
+   if (!data.description|| !data.title  || !data.data.type) {
+    alert("Please complete Basic Details first.");
+    navigate("/");
+    return;
+  }
+  if (validate()) {
+    setStepValid(prev => ({ ...prev, rewards: true }));
     navigate("/backer");
-  };
+  }
+};
+
 
   const handleBack = () => navigate("/");
 

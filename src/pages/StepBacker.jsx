@@ -31,13 +31,25 @@ export default function StepBacker() {
     return Object.keys(newErrors).length === 0;
   };
 
-  const handleSubmit = () => {
-    if (!validate()) return;
+const handleSubmit = () => {
+  if (!data.reward.amount || !data.reward.winners || !data.timeline.expiration_date) {
+    alert("Please complete Rewards & Timeline step first.");
+    navigate("/rewards");
+    return;
+  }
+  if (!data.description|| !data.title  || !data.data.type) {
+    alert("Please complete Basic Details first.");
+    navigate("/");
+    return;
+  }
 
-    setTimeout(() => {
-      navigate("/confirm");
-    }, 500);
-  };
+  if (!validate()) return;
+
+  setTimeout(() => {
+    navigate("/confirm");
+  }, 500);
+};
+
 
   const handleBack = () => navigate("/rewards");
 

@@ -50,12 +50,12 @@ The app maintains persistent form data across steps, includes strong validation,
 
 ## Tech Stack
 
-Framework -> React + Vite
-Styling -> Tailwind CSS
-Routing -> React Router DOM
-State Management -> React Context API
-Deployment -> Vercel
-Language -> JavaScript
+Framework -> React + Vite <br>
+Styling -> Tailwind CSS<br>
+Routing -> React Router DOM<br>
+State Management -> React Context API<br>
+Deployment -> Vercel<br>
+Language -> JavaScript<br>
 
 ## Project Structure
 src/<br>
@@ -105,15 +105,15 @@ git clone https://github.com/shivangi-sati/bounty-creator-wizard.git
 
 # 2. Install Dependencies
 
-npm create vite@latest bounty-app
-npm install
-npm install react-router-dom
-npm install tailwindcss @tailwindcss/vite
+npm create vite@latest bounty-app<br>
+npm install<br>
+npm install react-router-dom<br>
+npm install tailwindcss @tailwindcss/vite<br>
 
 # 3. Start Development Server
 
-cd bounty-app
-npm run dev
+cd bounty-app<br>
+npm run dev<br>
 
 Open:
 
